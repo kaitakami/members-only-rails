@@ -1,0 +1,14 @@
+<main class="flex h-96 py-96 items-center justify-center bg-white">
+  <section class="mx-auto max-w-[43rem]">
+    <div class="text-center">
+      <p class="text-lg font-medium leading-8 text-indigo-600/95">Introducing Members Only</p>
+      <h1 class="mt-3 text-[3.5rem] font-bold leading-[4rem] tracking-tight text-black">Share secrets&nbsp; without being afraid.</h1>
+      <p class="mt-3 text-lg leading-relaxed text-slate-400">No one knows who you are in this social app. Neither we want to know. This is a place where you can be free.</p>
+    </div>
+
+    <div class="mt-6 flex items-center justify-center gap-4">
+      <%= link_to '<button class="transform rounded-md bg-indigo-600/95 px-5 py-3 font-medium text-white transition-colors hover:bg-indigo-700">Sign up</button>'.html_safe, new_member_registration_path %>
+      <%= link_to '<button class="transform rounded-md border border-slate-200 px-5 py-3 font-medium text-slate-900 transition-colors hover:bg-slate-50">Sign in</button>'.html_safe, new_member_session_path %>
+    </div>
+  </section>
+</main>

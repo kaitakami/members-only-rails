@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Members Only</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="min-h-screen">
+    <nav class="flex justify-between w-full p-3 md:p-5">
+      <div class="container flex justify-between">
+          <h1 class="text-base font-bold my-auto">Members Only</h1>
+        <ul class="flex gap-2 md:gap-8">
+
+        <% if !member_signed_in? %>
+          <li><%= link_to '<button class="transform rounded-md bg-indigo-600/95 px-5 py-3 font-medium text-white transition-colors hover:bg-indigo-700">Sign up</button>'.html_safe, new_member_registration_path %></li>
+          <li><%= link_to '<button class="transform rounded-md border border-slate-200 px-5 py-3 font-medium text-slate-900 transition-colors hover:bg-slate-50">Sign in</button>'.html_safe, new_member_session_path %></li>
+        </ul>
+        <% end %>
+      </div>
+    </nav>
+    <div class="container">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    </div>
+    <%= yield %>
+  </body>
+</html>
