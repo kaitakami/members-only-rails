@@ -1,0 +1,15 @@
+<div class="container">
+<% if current_member.try(:id) == @post.member_id %>
+  <h2 class="text-center text-3xl md:text-4xl pt-24 font-bold">Edit Post</h2>
+  <%= form_with model: @post, data: { turbo: false }, class: "flex justify-center flex-col max-w-2xl align-middle m-auto gap-4 md:bg-indigo-200 p-5 rounded-md shadow-md mt-3 pt-12" do |f| %>
+    <%= f.label :title, class: "font-medium text-gray-600" %>
+    <%= f.text_field :title, class: "rounded-md bg-transparent border-indigo-300 border-2" %>
+    <%= f.label :body, class: "font-medium text-gray-600" %>
+    <%= text_area(:post, :body, cols: 40, rows: 15, class: 'rounded-md bg-transparent border-indigo-300 border-2') %>
+    <%= f.submit "Share post", class: "transform rounded-md bg-indigo-600/95 px-5 py-3 font-medium text-white transition-colors hover:bg-indigo-700"%>
+  <% end %>
+<% else %>
+  <h2 class="text-center text-3xl mt-8">You can't edit posts of other members</h2>
+  <%= link_to "Go back", root_path %>
+<% end %>
+</div>

@@ -1,5 +1,23 @@
-<div>
-  <h1 class="font-bold text-4xl">Dashboard#index</h1>
-  <p>Find me in app/views/dashboard/profile.html.erb</p>
+<div class="container">
+  <div class="m-8 px-12 p-6 bg-gray-100 rounded-md">
+    <h1 class="font-bold text-4xl">Your profile</h1>
+    <div class="my-5">
+      <p class="font-semibold">Username</p>
+      <p class="text-sm">@<%= current_member.username %></p>
+    </div>
+    <div class="my-5">
+      <p class="font-semibold">Email</p>
+      <p class="text-sm"><%= current_member.email %></p>
+    </div>
+    <div class="my-5">
+      <p class="font-semibold">Posts</p>
+      <p class="text-sm"><%= current_member.posts.length %></p>
+    </div>
+    <div class="flex gap-4">
+      <%= link_to '<button class="transform rounded-md px-5 py-3 font-medium text-white transition-colors hover:bg-indigo-700 bg-indigo-500">Edit Profile</button>
+      '.html_safe, edit_member_registration_path %>
+      <%= button_to "Sign Out", destroy_member_session_path, method: :delete, class: "transform rounded-md px-5 py-3 font-medium text-white transition-colors hover:bg-red-700 bg-red-500" %>
+    </div>
+  </div>
+  <%= render "shared/posts", posts: @posts %>
 </div>
-<%= button_to "logout", destroy_member_session_path, method: :delete  %>
