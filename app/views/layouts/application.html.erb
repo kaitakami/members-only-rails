@@ -14,14 +14,17 @@
   <body class="min-h-screen">
     <nav class="flex justify-between w-full p-3 md:p-5">
       <div class="container flex justify-between">
-          <h1 class="text-base font-bold my-auto">Members Only</h1>
+          <h1 class="text-base font-bold my-auto"><%= link_to "Members Only", root_path %></h1>
         <ul class="flex gap-2 md:gap-8">
-
-        <% if !member_signed_in? %>
+        <% if member_signed_in? %>
+          <li class="my-auto hidden sm:block"><%= link_to "Home", posts_path %></li>
+          <li class="my-auto"><%= link_to "My Profile", dashboard_profile_path %></li>
+          <li><%= link_to '<button class="transform rounded-md bg-indigo-600/95 px-5 py-3 font-medium text-white transition-colors hover:bg-indigo-700">New Post</button>'.html_safe, new_post_path %></li>
+        <% else %>
           <li><%= link_to '<button class="transform rounded-md bg-indigo-600/95 px-5 py-3 font-medium text-white transition-colors hover:bg-indigo-700">Sign up</button>'.html_safe, new_member_registration_path %></li>
           <li><%= link_to '<button class="transform rounded-md border border-slate-200 px-5 py-3 font-medium text-slate-900 transition-colors hover:bg-slate-50">Sign in</button>'.html_safe, new_member_session_path %></li>
-        </ul>
         <% end %>
+        </ul>
       </div>
     </nav>
     <div class="container">
